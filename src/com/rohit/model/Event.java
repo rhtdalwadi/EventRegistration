@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Event {
   
+  Employee employee;
   String eventId;
   String eventName;
   Date eventStartTime;
@@ -11,6 +12,12 @@ public class Event {
   City city;
   String slotNumber;
   
+  public Employee getEmployee() {
+    return employee;
+  }
+  public void setEmployee(Employee employee) {
+    this.employee = employee;
+  }
   public String getEventId() {
     return eventId;
   }

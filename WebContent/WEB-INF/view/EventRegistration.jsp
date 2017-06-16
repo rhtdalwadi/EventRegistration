@@ -7,21 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:errors path="student.*" />
-	<form action="submitEvent" method="post">
+	<form:errors path="employeeEvent.*"/>
+	<form action="registerEvent" method="post">
 		<table>
 			<tr>
 				<th width="100" align="left">Employee Id :</th>
-				<td><input type="text" name="empId" value="${empId}"/></td>
+				<td><input type="text" name="employee.empId" value="${empId}"/></td>
 			</tr>
 			<tr>
 				<th width="100" align="left">Employee Name :</th>
-				<td><input type="text" name="empName" /></td>
+				<td><input type="text" name="employee.empFirstName" /></td>
+				<td><input type="text" name="employee.empLastName" /></td>
 			</tr>
 
 			<tr>
-				<th width="100" align="left">Event Slot :</th>
-				<td><select name="skills">
+				<th width="100" align="left">Event City :</th>
+				<td><select name="city.cityName">
 						<option value="City1">Ahmedabad</option>
 						<option value="City2">Rajkot</option>
 						<option value="City3">Gandhinagar</option>
@@ -29,7 +30,7 @@
 			</tr>
 			<tr>
 				<th width="100" align="left">Event Slot :</th>
-				<td><select name="skills">
+				<td><select name="slotNumber">
 						<option value="Slot1">Friday 10:00 AM - 11:00 AM</option>
 						<option value="Slot2">Friday 11:00 AM - 12:00 AM</option>
 						<option value="Slot3">Friday 12:00 AM - 1:00 PM</option>

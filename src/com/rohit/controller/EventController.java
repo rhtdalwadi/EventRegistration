@@ -1,28 +1,18 @@
 package com.rohit.controller;
 
-import java.util.Map;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.rohit.model.Event;
 
 @Controller
 public class EventController
 {
-
-    /*@RequestMapping("/welcome/country/{username}")
-    public ModelAndView handleRequestInternal(@PathVariable Map<String,String> pathVars) {
-        ModelAndView model = new ModelAndView("HelloPage");
-        model.addObject("msg","Hello world greet from "+pathVars.get("username"));
-        return model;
-    }*/
-    @RequestMapping("/index")
-    public ModelAndView displayHomePage() {
-        ModelAndView model = new ModelAndView("index");
-        model.addObject("You are successfully registered with Event");
-        return model;
-    }
     
     @RequestMapping("openEventRegistrationForm")
     public ModelAndView openEventRegistrationForm(@RequestParam("empId") String empId) {
@@ -32,8 +22,14 @@ public class EventController
       return mv;
     }
     
-    public void submitEvent()
+    @RequestMapping(value = "registerEvent", method=RequestMethod.POST)
+    public String registerEvent(@ModelAttribute("event") Event event, BindingResult results)
     {
+      if(results.hasErrors())
+      {
+        System.out.println(results.getErrorCount());
+      }
+     return "redirect:/index";
       
     }
 

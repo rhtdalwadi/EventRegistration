@@ -9,9 +9,6 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-	<!-- <bean id="HandlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" 
-		/> <bean name="/welcome.html" class="com.test.HelloController" /> -->
-
 	<context:component-scan base-package="com.rohit.controller" />
 	<mvc:annotation-driven />
 	<bean id="viewResolver'"
@@ -22,10 +19,6 @@
 		<property name="suffix">
 			<value>.jsp</value>
 		</property>
-	</bean>
-	<bean id="messageSource"
-		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name = "basename" value = "/WEB-INF/message"/>
 	</bean>
 	<mvc:view-controller path="/" view-name="index"/>
 </beans>

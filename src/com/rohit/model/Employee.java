@@ -5,6 +5,21 @@ public class Employee {
   String empFirstName;
   String empLastName;
   
+  public Employee()
+  {
+    
+  }
+  public Employee(String empId)
+  {
+    this.empId = empId;
+  }
+  public Employee(String empId, String empFirstName, String empLastName)
+  {
+    this.empId = empId;
+    this.empFirstName = empFirstName;
+    this.empLastName = empLastName;
+  }
+  
   public String getEmpId() {
     return empId;
   }
