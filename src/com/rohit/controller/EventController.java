@@ -11,26 +11,25 @@ import org.springframework.web.servlet.ModelAndView;
 import com.rohit.model.Event;
 
 @Controller
-public class EventController
-{
-    
-    @RequestMapping("openEventRegistrationForm")
-    public ModelAndView openEventRegistrationForm(@RequestParam("empId") String empId) {
-      ModelAndView mv = new ModelAndView("EventRegistration");
-      System.out.println(empId);
-      mv.addObject("empId", empId);
-      return mv;
+public class EventController {
+
+  @RequestMapping("openEventRegistrationForm")
+  public ModelAndView openEventRegistrationForm(@RequestParam("empId") String empId) {
+    ModelAndView mv = new ModelAndView("EventRegistration");
+    System.out.println(empId);
+    mv.addObject("empId", empId);
+    return mv;
+  }
+
+  @RequestMapping(value = "registerEvent", method = RequestMethod.POST)
+  public ModelAndView registerEvent(@ModelAttribute("event") Event event, BindingResult results) {
+    if (results.hasErrors()) {
+      System.out.println(results.getErrorCount());
     }
-    
-    @RequestMapping(value = "registerEvent", method=RequestMethod.POST)
-    public String registerEvent(@ModelAttribute("event") Event event, BindingResult results)
-    {
-      if(results.hasErrors())
-      {
-        System.out.println(results.getErrorCount());
-      }
-     return "redirect:/index";
-      
-    }
+    ModelAndView mv = new ModelAndView("SuccessfullyRegisterd");
+    return mv;
+
+
+  }
 
 }

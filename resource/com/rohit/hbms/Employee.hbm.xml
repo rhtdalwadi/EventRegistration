@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2017 7:02:40 PM by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.rohit.hbms.Employee" table="employee" catalog="eventregistration">
+        <id name="empId" type="string">
+            <column name="EMP_ID" length="45" />
+            <generator class="assigned" />
+        </id>
+        <property name="empFirstName" type="string">
+            <column name="EMP_FIRST_NAME" length="45" />
+        </property>
+        <property name="empLastName" type="string">
+            <column name="EMP_LAST_NAME" length="45" />
+        </property>
+        <set name="rolesDefinations" table="roles_employee" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="EMP_ID" length="45" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.rohit.hbms.RolesDefination">
+                <column name="ROLE_ID" length="45" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

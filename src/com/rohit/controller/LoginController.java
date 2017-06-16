@@ -8,6 +8,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
   
+  @RequestMapping("/index")
+  public ModelAndView displayHomePage() {
+    ModelAndView model = new ModelAndView("index");
+    model.addObject("You are successfully registered with Event");
+    return model;
+  }
+  
   @RequestMapping(value="/login")
   public ModelAndView login(@RequestParam("empId") String empId)
   {

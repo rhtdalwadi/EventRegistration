@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 16, 2017 7:02:40 PM by Hibernate Tools 4.0.0.Final -->
+<hibernate-mapping>
+    <class name="com.rohit.hbms.Event" table="event" catalog="eventregistration">
+        <id name="eventId" type="string">
+            <column name="EVENT_ID" length="45" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="city" class="com.rohit.hbms.City" fetch="select">
+            <column name="CITY_ID" length="45" not-null="true" />
+        </many-to-one>
+        <property name="eventName" type="string">
+            <column name="EVENT_NAME" length="45" not-null="true" />
+        </property>
+        <property name="eventStartTime" type="timestamp">
+            <column name="EVENT_START_TIME" length="19" not-null="true" />
+        </property>
+        <property name="eventEndTime" type="timestamp">
+            <column name="EVENT_END_TIME" length="19" not-null="true" />
+        </property>
+        <property name="eventSlotNo" type="int">
+            <column name="EVENT_SLOT_NO" not-null="true" unique="true" />
+        </property>
+        <property name="eventSlotCapacity" type="int">
+            <column name="EVENT_SLOT_CAPACITY" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
