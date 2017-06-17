@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jun 16, 2017 7:02:40 PM by Hibernate Tools 4.0.0.Final -->
 <hibernate-mapping>
-    <class name="com.rohit.hbms.City" table="city" catalog="eventregistration">
+    <class name="com.rohit.model.City" table="city" catalog="eventregistration">
         <id name="cityId" type="string">
             <column name="CITY_ID" length="45" />
             <generator class="assigned" />

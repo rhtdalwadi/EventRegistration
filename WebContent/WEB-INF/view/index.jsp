@@ -7,7 +7,7 @@
 <title>Event Registration</title>
 </head>
 <body>
-	<form action="openEventRegistrationForm" method="post">
+	<form action="login" method="post">
 		Employee ID:<input type="text" name="empId" /><br />
 		<br /> <input type="submit" value="login" />"
 	</form>
