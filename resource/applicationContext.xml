@@ -53,12 +53,12 @@
 		</property>
 	</bean>
 	
-	<!-- <bean id="hibernateDao" parent="txAttribute">
+	<bean id="hibernateDao" parent="txAttribute">
 		<property name="target">
-			<bean class="com.rohit.framework.ERHibernateDaoSupport">
+			<bean class="com.rohit.framework.impl.HibernateDaoImpl">
 				<property name="sessionFactory" ref="baseSessionFactory"></property>
 			</bean>
 		</property>
-	</bean> -->
+	</bean>
 </beans>
 		

@@ -15,8 +15,8 @@ public class EventController {
 
   @RequestMapping("openEventRegistrationForm")
   public ModelAndView openEventRegistrationForm(@RequestParam("empId") String empId) {
+    
     ModelAndView mv = new ModelAndView("EventRegistration");
-    System.out.println(empId);
     mv.addObject("empId", empId);
     return mv;
   }
@@ -26,10 +26,16 @@ public class EventController {
     if (results.hasErrors()) {
       System.out.println(results.getErrorCount());
     }
+    
     ModelAndView mv = new ModelAndView("SuccessfullyRegisterd");
     return mv;
-
-
+  }
+  
+  public ModelAndView addNewEvent(@ModelAttribute("event") Event event)
+  {
+    
+    ModelAndView mv = new ModelAndView("index");
+    return mv;
   }
 
 }
