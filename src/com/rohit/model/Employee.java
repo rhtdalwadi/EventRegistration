@@ -24,7 +24,7 @@ public class Employee implements java.io.Serializable {
   private String empId;
   private String empFirstName;
   private String empLastName;
-  private Set rolesDefinations = new HashSet(0);
+  private Set<RolesDefination> rolesDefinations = new HashSet<>(0);
 
   public Employee() {}
 
@@ -33,7 +33,7 @@ public class Employee implements java.io.Serializable {
     this.empId = empId;
   }
 
-  public Employee(String empId, String empFirstName, String empLastName, Set rolesDefinations) {
+  public Employee(String empId, String empFirstName, String empLastName, Set<RolesDefination> rolesDefinations) {
     this.empId = empId;
     this.empFirstName = empFirstName;
     this.empLastName = empLastName;
@@ -76,11 +76,11 @@ public class Employee implements java.io.Serializable {
   @JoinTable(name = "roles_employee", catalog = "eventregistration",
       joinColumns = {@JoinColumn(name = "EMP_ID", nullable = false, updatable = false)},
       inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", nullable = false, updatable = false)})
-  public Set getRolesDefinations() {
+  public Set<RolesDefination> getRolesDefinations() {
     return this.rolesDefinations;
   }
 
-  public void setRolesDefinations(Set rolesDefinations) {
+  public void setRolesDefinations(Set<RolesDefination> rolesDefinations) {
     this.rolesDefinations = rolesDefinations;
   }
 

@@ -23,7 +23,11 @@ public class EmployeeDaoImpl implements IEmployeeDao{
     return (Employee) hibernateDao.fetchEntity(Employee.class, employeeId);
     
   }
-  
-  
+
+
+  @Override
+  public void insertEmployee(Employee employee) {
+    hibernateDao.insertEntity(employee);
+  }
   
 }

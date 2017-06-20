@@ -1,5 +1,10 @@
 package com.rohit.controller;
 
+import static com.rohit.util.ERConstants.ROLE_ADMIN;
+import static com.rohit.util.ERConstants.ROLE_EMPLOYEE;
+
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.rohit.model.Employee;
+import com.rohit.model.RolesDefination;
 import com.rohit.service.EmployeeService;
-import static com.rohit.util.ERConstants.*;
+
 
 @Controller
 public class LoginController {
@@ -29,16 +35,19 @@ public class LoginController {
 
     Employee employee = employeeService.findEmployeeById(empId);
     if (employee != null) {
-      switch (getEmployeePrivilege(employee)) {
-        case ROLE_ADMIN:
-          mv = redirectToPage(employee, "adminPage");
-          break;
-        case ROLE_EMPLOYEE:
-          mv = redirectToPage(employee, "EventRegistration");
-        default:
-          mv = redirectToPage(employee, "index");
-          break;
+      
+      if(employeeHasRole(employee,ROLE_ADMIN))
+      {
+        mv = redirectToPage(employee, "adminPage");
       }
+      else if(employeeHasRole(employee,ROLE_EMPLOYEE))
+      {
+        mv = redirectToPage(employee, "EventRegistration");
+      }
+    }
+    else
+    {
+      mv = redirectToPage(employee, "index");
     }
     return mv;
   }
@@ -49,8 +58,7 @@ public class LoginController {
     return mv;
   }
 
-  private String getEmployeePrivilege(Employee employee) {
-    
-    return null;
+  private boolean employeeHasRole(Employee employee,String employeeRole) {
+    return employeeService.employeeHasRole(employee, employeeRole);
   }
 }

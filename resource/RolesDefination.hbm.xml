@@ -15,7 +15,7 @@
             <key>
                 <column name="ROLE_ID" length="45" not-null="true" />
             </key>
-            <many-to-many entity-name="com.rohit.hbms.Employee">
+            <many-to-many entity-name="com.rohit.model.Employee">
                 <column name="EMP_ID" length="45" not-null="true" />
             </many-to-many>
         </set>

@@ -8,7 +8,7 @@
             <column name="EVENT_ID" length="45" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="city" class="com.rohit.hbms.City" fetch="select">
+        <many-to-one name="city" class="com.rohit.model.City" fetch="select">
             <column name="CITY_ID" length="45" not-null="true" />
         </many-to-one>
         <property name="eventName" type="string">

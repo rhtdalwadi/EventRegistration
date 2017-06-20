@@ -15,7 +15,7 @@
             <key>
                 <column name="CITY_ID" length="45" not-null="true" />
             </key>
-            <one-to-many class="com.rohit.hbms.Event" />
+            <one-to-many class="com.rohit.model.Event" />
         </set>
     </class>
 </hibernate-mapping>
