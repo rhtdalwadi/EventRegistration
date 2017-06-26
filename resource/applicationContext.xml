@@ -46,11 +46,11 @@
 	<!-- This is to use with bean defining in XML. Check below hibernateDao bean -->
 	<bean id="txAttribute" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
 		<property name="transactionManager" ref="transactionManager" />
-		<property name="transactionAttributes">
-			<props>
+		<!--<property name="transactionAttributes">
+			 <props>
 				<prop key="*">PROPAGATION_REQUIRED</prop>
-			</props>
-		</property>
+			</props> 
+		</property>-->
 	</bean>
 	
 	<bean id="hibernateDao" parent="txAttribute">

@@ -72,6 +72,7 @@ public class Employee implements java.io.Serializable {
     this.empLastName = empLastName;
   }
 
+  
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "roles_employee", catalog = "eventregistration",
       joinColumns = {@JoinColumn(name = "EMP_ID", nullable = false, updatable = false)},

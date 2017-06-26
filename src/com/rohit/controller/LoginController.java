@@ -33,32 +33,30 @@ public class LoginController {
   public ModelAndView login(@RequestParam("empId") String empId) {
     ModelAndView mv = null ;
 
-    Employee employee = employeeService.findEmployeeById(empId);
-    if (employee != null) {
-      
-      if(employeeHasRole(employee,ROLE_ADMIN))
+    String role  = employeeService.getEmployeeRole(empId);
+    if (role != null) {
+      System.out.println(role);
+      if(role.equals(ROLE_ADMIN))
       {
-        mv = redirectToPage(employee, "adminPage");
+        mv = redirectToPage(empId, "adminPage");
       }
-      else if(employeeHasRole(employee,ROLE_EMPLOYEE))
+      else if(role.equals(ROLE_EMPLOYEE))
       {
-        mv = redirectToPage(employee, "EventRegistration");
+        mv = redirectToPage(empId, "EventRegistration");
       }
     }
     else
     {
-      mv = redirectToPage(employee, "index");
+      //mv = redirectToPage(employee, "index");
     }
     return mv;
   }
 
-  private ModelAndView redirectToPage(Employee employee, String page) {
+  private ModelAndView redirectToPage(String employeeId, String page) {
     ModelAndView mv = new ModelAndView(page);
-    mv.addObject("employee", employee);
+    mv.addObject("employee", employeeId);
     return mv;
   }
 
-  private boolean employeeHasRole(Employee employee,String employeeRole) {
-    return employeeService.employeeHasRole(employee, employeeRole);
-  }
+  
 }
